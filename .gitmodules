@@ -1,0 +1,6 @@
+[submodule "deps/libpg_query"]
+	path = deps/libpg_query
+	url = https://github.com/pganalyze/libpg_query
+[submodule "deps/jansson"]
+	path = deps/jansson
+	url = https://github.com/akheron/jansson
