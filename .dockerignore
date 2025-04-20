@@ -1,0 +1,4 @@
+.git
+.vscode
+deps/jansson
+*.out

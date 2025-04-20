@@ -53,3 +53,12 @@ dkms.conf
 
 # Visual Studio Code
 .vscode/
+
+# Build directory
+build/
+
+# Development-only
+dev.mk
+
+# Web UI
+web_ui/
