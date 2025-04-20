@@ -24,5 +24,5 @@ make test
 
 ## Acknowledgments
 
-- [libpg_query](https://github.com/pganalyze/libpg_query) - PostgreSQL parser used for SQL analysis
+- [libpg_query](https://github.com/pganalyze/libpg_query) - C library for accessing the PostgreSQL parser outside of the server environment
 - [jansson](https://github.com/akheron/jansson) - C library for encoding, decoding and manipulating JSON data
