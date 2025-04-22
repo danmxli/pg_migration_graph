@@ -5,6 +5,9 @@
 #include <jansson.h>
 #include "parser.h"
 
+// Function for generic logging of json objects
+void log_json(const char *message, json_t *json);
+
 // Function to print the entire parse tree in a formatted way
 void print_parse_tree(PgQueryParseTree *parse_tree);
 
