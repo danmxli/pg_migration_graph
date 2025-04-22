@@ -7,6 +7,15 @@ PostgreSQL migration visualizer - Transform SQL schema changes into weighted dir
 - Visualize schema evolution over time
 - Build dependency graphs from migration scripts
 
+## Docker Usage
+
+### Building Docker Image
+
+```bash
+# Build the Docker image
+docker build -t pg_migration_graph .
+```
+
 ## Development
 
 ### Project Structure
