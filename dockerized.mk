@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -I./deps/libpg_query -I/usr/include -Wall -Wextra
-LDFLAGS = -L./deps/libpg_query -lpg_query -ljansson -lmicrohttpd
+CFLAGS = -I/usr/include -Wall -Wextra
+LDFLAGS = -lpg_query -ljansson -lmicrohttpd
 
 # Main application
 pg_migration_graph.out: src/main.c src/parser.c src/graph_builder.c src/helper.c src/api.c

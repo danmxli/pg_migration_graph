@@ -14,6 +14,11 @@ PostgreSQL migration visualizer - Transform SQL schema changes into weighted dir
 ```bash
 # Build the Docker image
 docker build -t pg_migration_graph .
+
+# Then you can manually run the compiled executable
+docker run --rm pg_migration_graph "<SQL>"
+# Memory debugging
+docker run --rm --entrypoint valgrind pg_migration_graph --leak-check=full /app/pg_migration_graph.out "<SQL>"
 ```
 
 ## Development

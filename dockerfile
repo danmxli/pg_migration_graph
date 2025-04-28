@@ -1,12 +1,13 @@
-FROM ubuntu:22.04
+FROM ubuntu:latest
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
-    git \
+    valgrind \
     pkg-config \
     libjansson-dev \
     libmicrohttpd-dev \
+    libpg-query-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up working directory
@@ -15,13 +16,6 @@ WORKDIR /app
 # Copy source code
 COPY src/ /app/src/
 COPY tests/ /app/tests/
-
-# Clone and build libpg_query
-RUN mkdir -p deps && \
-    cd deps && \
-    git clone https://github.com/pganalyze/libpg_query.git && \
-    cd libpg_query && \
-    make
 
 # Create an internal Makefile for Linux environment
 COPY dockerized.mk /app/Makefile
