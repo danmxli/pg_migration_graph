@@ -194,6 +194,32 @@ void free_parse_tree(PgQueryParseTree *parse_tree)
                 }
                 free(parse_tree->stmts[i].alter_stmt.columns);
             }
+
+            // Free foreign keys if any
+            if (parse_tree->stmts[i].alter_stmt.foreign_keys)
+            {
+                // For each foreign key reference
+                for (size_t j = 0; j < parse_tree->stmts[i].alter_stmt.num_foreign_keys; j++)
+                {
+                    // Free the array of column names in current table
+                    for (size_t k = 0; k < parse_tree->stmts[i].alter_stmt.foreign_keys[j].num_fk_attrs; k++)
+                    {
+                        free(parse_tree->stmts[i].alter_stmt.foreign_keys[j].fk_attrs[k]);
+                    }
+                    free(parse_tree->stmts[i].alter_stmt.foreign_keys[j].fk_attrs);
+                    
+                    // Free the referenced table name
+                    free(parse_tree->stmts[i].alter_stmt.foreign_keys[j].referenced_table.relname);
+                    
+                    // Free the array of column names in referenced table
+                    for (size_t k = 0; k < parse_tree->stmts[i].alter_stmt.foreign_keys[j].num_ref_attrs; k++)
+                    {
+                        free(parse_tree->stmts[i].alter_stmt.foreign_keys[j].ref_attrs[k]);
+                    }
+                    free(parse_tree->stmts[i].alter_stmt.foreign_keys[j].ref_attrs);
+                }
+                free(parse_tree->stmts[i].alter_stmt.foreign_keys);
+            }
             break;
 
         default:

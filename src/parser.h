@@ -12,7 +12,7 @@ typedef enum
     STMT_UNKNOWN
 } StmtType;
 
-// struct for the range variable
+// struct for the range variable, AKA the table name
 typedef struct
 {
     char *relname;
@@ -24,6 +24,16 @@ typedef struct
     char *colname;
     char *typeName;
 } ColumnDef;
+
+// struct for foreign key reference
+typedef struct
+{
+    char **fk_attrs; // array of column names in the current table
+    size_t num_fk_attrs; // number of columns
+    RangeVar referenced_table; // the table being referenced
+    char **ref_attrs; // array of column names in the referenced table
+    size_t num_ref_attrs; // number of columns
+} ForeignKeyRef;
 
 // struct for the column reference
 typedef struct
@@ -46,6 +56,8 @@ typedef struct
     RangeVar relation;
     ColumnRef *columns;
     size_t num_columns;
+    ForeignKeyRef *foreign_keys;
+    size_t num_foreign_keys;
 } AlterTableStmt;
 
 // struct for the statement
